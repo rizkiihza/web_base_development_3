@@ -18,7 +18,6 @@ app.post('/send', function (req, res) {
     let payload = req.body.payload;
     sendMessage(registrationToken, payload);
     console.log(req.body);
-    res.send("Testing.");
 });
 
 
