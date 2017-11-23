@@ -1,0 +1,27 @@
+{
+  "name": "wbd3",
+  "version": "1.0.0",
+  "description": "tugas besar wbd",
+  "main": "index.js",
+  "scripts": {
+    "test": "-"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.informatika.org/RIP/TugasBesar3_2017.git"
+  },
+  "keywords": [
+    "web",
+    "base",
+    "development",
+    "3"
+  ],
+  "author": "rip_iqbal_fathur",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4"
+  }
+}
