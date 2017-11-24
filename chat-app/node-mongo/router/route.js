@@ -11,7 +11,7 @@ router.get('/chatapp', (req, res, next) => {
 }); 
 
 router.get('/chatapp/:sender_id/:receiver_id', (req, res, next) => {
-    Chat.find({sender_id: req.params.sender_id, receiver_id: req.params.receiver_id},"message time", function(err, chats){
+    Chat.find({sender_id: req.params.sender_id, receiver_id: req.params.receiver_id},"sender_id receiver_id message time", function(err, chats){
         if(err)
             console.log(err);
         res.json(chats);
