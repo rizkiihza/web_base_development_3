@@ -5,6 +5,4 @@ out/
 *.iws
 *.iml
 *.wsdl
-/web/finding_order.jsp
-/web/js/finding_order.js
-/src/findingorder/
+
