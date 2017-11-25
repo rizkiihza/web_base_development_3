@@ -9,6 +9,7 @@ public class FindingOrder {
         Connection connection = null;
 
         try {
+            MySQLconnect.connect();
             connection = MySQLconnect.getConn();
             Statement stmt = connection.createStatement();
             String query = "SELECT is_finding FROM find_order WHERE ID="+driverId;

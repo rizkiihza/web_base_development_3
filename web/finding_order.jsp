@@ -1,4 +1,4 @@
-<%--<%@ page import="ws.OjekWSImpl" %>--%>
+<%@ page import="ws.OjekWSImpl" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--<%@include file="profile_data.jsp"%>--%>
+<%@include file="profile_data.jsp"%>
 <html>
 <head>
     <title>PR-OJEK Order</title>
@@ -17,14 +17,14 @@
 <body>
 
 <%
-    //OjekWSImpl.validateAccess((String)session.getAttribute("TokenUserAktif"));
+    OjekWSImpl.validateAccess((String)session.getAttribute("TokenUserAktif"));
 
     // Stub //
-    session.setAttribute("UNUserAktif", "hilmi");
-    session.setAttribute("IDUserAktif", 1);
+//    session.setAttribute("UNUserAktif", "hilmi");
+//    session.setAttribute("IDUserAktif", 1);
 %>
 <div id="frame">
-    <span id="idUserAktif" hidden><% session.getAttribute("IDUserAktif"); %></span>
+    <span id="idUserAktif" hidden><%=session.getAttribute("IDUserAktif")%></span>
 
     <header class="clearfix">
         <div id=logo>

@@ -1,6 +1,7 @@
 function sendFindRequest() {
     var request = new XMLHttpRequest();
-    request.open("POST", "http://localhost:8081/ojol/find");
+    var driverId = document.getElementById("idUserAktif").innerHTML;
+    request.open("POST", "find");
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
@@ -12,8 +13,9 @@ function sendFindRequest() {
         }
     };
     console.log(request.readyState);
-    request.send("driverId=1");
+    request.send("driverId="+driverId);
 }
+
 
 function findOrder() {
     var findButton = document.getElementById("find-button");

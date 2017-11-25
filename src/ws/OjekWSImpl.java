@@ -26,7 +26,7 @@ import history.listhistory;
 public class OjekWSImpl implements OjekWS {
 
     public static void validateAccess(String token) {
-        String url = "http:://localhost:8080/loginServlet?token=" + token;
+        String url = "http://localhost:8079/loginServlet?token=" + token;
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
