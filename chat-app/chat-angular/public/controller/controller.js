@@ -28,7 +28,7 @@ myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
             $scope.chats = sortByTime($scope.chats);
             $rootScope.chats = $scope.chats;
         });
-    
+        
     }
 ]);
 
