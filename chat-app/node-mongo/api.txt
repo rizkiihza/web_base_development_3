@@ -1,0 +1,21 @@
+contoh pemakaian API
+
+1. get all
+
+GET localhost:3000/chat/chatapp
+
+2. get with sender_id and receiver_id
+
+GET localhost:3000/chat/chatapp/sender_id/receiver_id
+
+3. post a chat into mongo db 
+
+POST localhost:3000/chat/chatapp
+
+with json body 
+{
+    "sender_id": "",
+    "receiver_id": "",
+    "message": "",
+    "time": 
+}
