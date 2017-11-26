@@ -10,33 +10,27 @@
 <body>
     <div class="container">
         <h1> Chat App</h1>
-        
-        <table class="table" ng-controller="AppView">
-            <thead>
-                <tr>
-                    <th>sender_id</th>
-                    <th>receiver_id</th>
-                    <th>message_id</th>
-                    <th>time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat = "chat in chats">
-                    <td> {{chat.sender_id}} </td>
-                    <td> {{chat.receiver_id}} </td>
-                    <td> {{chat.message}} </td>
-                    <td> {{chat.time}} </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div>
+        <div class="panel" >
+            <div id="kotak_chat" class="panel-body" style="height: 500px;overflow: auto;">
+                <table class="table" ng-controller="AppView">
+                    <tbody style ="max-height:100px;">
+                        <tr ng-repeat = "chat in chats">
+                            <td> {{chat.sender_id}} </td>
+                            <td> {{chat.receiver_id}} </td>
+                            <td> {{chat.message}} </td>
+                            <td> {{chat.time}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class = "row">
             <div class = "navbar fixed-bottom" ng-controller="AppAdd">
-                <div class = "col-sm-8">
-                    <input class = "form-control" ng-model= "chat.message">
+                <div class = "col-sm-11">
+                    <input class = "form-control" ng-model= "chat.pesan">
                 </div>
-                <div class = "col-sm-4">
-                    <button class = "btn btn-primary" ng-click= "addChat()" onClick="window.location.reload()">send</button>
+                <div class = "col-sm-1">
+                    <button class = "btn btn-primary" ng-click= "addChat()" onClick="updateChat()">send</button>
                 </div>
             </div>
         </div> 
@@ -44,6 +38,21 @@
     </div>
 </body>
 </html>
+<script>
+    function updateScroll(){
+        var element = document.getElementById("kotak_chat");
+        element.scrollTop = element.scrollHeight;
+    }
+
+    function updateChat(){
+        var delayInMilliseconds = 100; //1 second
+
+    setTimeout(function() {
+        updateScroll();
+    }, delayInMilliseconds);
+        
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script src="controller/controller.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>

@@ -35,12 +35,20 @@ myApp.controller('AppAdd', ['$rootScope','$scope', '$http', '$location',
             $scope.chat.sender_id = $location.search().sender_id;
             $scope.chat.receiver_id = $location.search().receiver_id;
             $scope.chat.time = new Date().getTime();
-            var new_chat = $scope.chat;
 
-            $scope.chats = $rootScope.chats;
-            $scope.chats.push(new_chat);
+            var chat_string = $scope.chat.pesan;
+            $scope.chat.message = chat_string;
+
+            var new_chat = JSON.parse(JSON.stringify($scope.chat));
+
+            $scope.pesan2 = $rootScope.chats;
+            $scope.pesan2.push(JSON.parse(JSON.stringify(new_chat)));
+
+            var total_pesan = $scope.pesan2;
+            $scope.chats = total_pesan;
+            $rootScope.chats = total_pesan;
             
-            console.log($scope.chat);
+            console.log($scope.chats);
             $http.post('http://localhost:3000/chat/chatapp/', $scope.chat);
         };
     }
