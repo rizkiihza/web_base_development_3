@@ -20,6 +20,6 @@ mongoose.connection.on('error', (err) => {
 app.use('/token', route);
 
 app.listen(3030, () =>{
-    console.log('this is firebase mongo');
+    console.log('this is firebase mongo at port 3030');
 });
 
