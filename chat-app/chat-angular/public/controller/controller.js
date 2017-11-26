@@ -21,9 +21,9 @@ myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
                 var obj = response.data[i];
                 $scope.chats.push(obj);
             }
+
             $scope.chats = sortByTime($scope.chats);
             $rootScope.chats = $scope.chats;
-            
         });
     
     }

@@ -26,6 +26,8 @@ router.post('/chatapp', (req, res, next) => {
         time: req.body.time
     });
 
+    
+
     newChat.save((err, contact) => {
         if (err) {
             res.json({msg: "Failed to add chat"});
