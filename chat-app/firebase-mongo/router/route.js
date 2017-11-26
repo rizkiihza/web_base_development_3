@@ -20,12 +20,11 @@ router.get('/tokenapp/:user_id', (req, res, next) => {
 }); 
 
 router.post('/tokenapp', (req, res, next) => {
+    Token.remove({user_id: req.body.user_id}, function(){});
     let newToken = new Token({
         user_id: req.body.user_id,
         token: req.body.token,
     });
-
-
 
     newToken.save((err, token) => {
         if (err) {

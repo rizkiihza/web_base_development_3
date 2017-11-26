@@ -2,8 +2,7 @@ chat-service API definition
 
 POST /send
 {
-	"jwt": "<JSON-WEB-TOKEN>",
-	"firebaseToken": "<FIREBASE-TOKEN>",
+	"user_id": "USER_ID",
 	"payload": {
 		"data": {
 			"text": "<MESSAGE>"
