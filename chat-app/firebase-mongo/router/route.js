@@ -4,10 +4,10 @@ const Token = require('../models/token');
 const mongoose = require("mongoose");
 
 router.get('/tokenapp', (req, res, next) => {
-    Token.find({},"user_id token", function(err, chats){
+    Token.find({},"user_id token", function(err, tokens){
         if(err)
             console.log(err);
-        res.json(chats);
+        res.json(tokens);
     })
 }); 
 
@@ -27,7 +27,7 @@ router.post('/tokenapp', (req, res, next) => {
 
 
 
-    newChat.save((err, token) => {
+    newToken.save((err, token) => {
         if (err) {
             res.json({msg: "Failed to add token"});
         } else {
