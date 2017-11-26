@@ -4,26 +4,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <title>Chat App</title>
 </head>
 <body>
     <div class="container">
         <h1> Chat App</h1>
-        <div class="panel" >
-            <div id="kotak_chat" class="panel-body" style="height: 500px;overflow: auto;">
-                <table class="table" ng-controller="AppView">
-                    <tbody style ="max-height:100px;">
-                        <tr ng-repeat = "chat in chats">
-                            <td> {{chat.sender_id}} </td>
-                            <td> {{chat.receiver_id}} </td>
-                            <td> {{chat.message}} </td>
-                            <td> {{chat.time}} </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="row" ng-controller="AppView">
+            <div class="col-sm-6">
+                <div ng-repeat="chat in chats" class="row">
+                    <h5 ng-show="chat.receiver_id == sid">{{chat.message}}</h5>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div ng-repeat="chat in chats" class="row">
+                    <h5 ng-show="chat.sender_id == sid">{{chat.message}}</h5>
+                </div>
             </div>
         </div>
+        <!--<div class="panel" >-->
+            <!--<div id="kotak_chat" class="panel-body" style="height: 500px;overflow: auto;">-->
+                <!--<table class="table" ng-controller="AppView">-->
+                    <!--<tbody style ="max-height:100px;">-->
+                        <!--<tr ng-repeat = "chat in chats">-->
+                            <!--<td> {{chat.sender_id}} </td>-->
+                            <!--<td> {{chat.receiver_id}} </td>-->
+                            <!--<td> {{chat.message}} </td>-->
+                            <!--<td> {{chat.time}} </td>-->
+                        <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class = "row">
             <div class = "navbar fixed-bottom" ng-controller="AppAdd">
                 <div class = "col-sm-11">
@@ -36,25 +47,28 @@
         </div> 
 
     </div>
+
+    <!--Script-->
+    <script>
+        function updateScroll(){
+            var element = document.getElementById("kotak_chat");
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function updateChat(){
+            var delayInMilliseconds = 100; //1 second
+
+            var input_value = document.getElementById("input_chat");
+
+            setTimeout(function() {
+                updateScroll();
+                input_value.value = '';
+            }, delayInMilliseconds);
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="controller/controller.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
-<script>
-    function updateScroll(){
-        var element = document.getElementById("kotak_chat");
-        element.scrollTop = element.scrollHeight;
-    }
-
-    function updateChat(){
-        var delayInMilliseconds = 100; //1 second
-
-        var input_value = document.getElementById("input_chat");
-
-        setTimeout(function() {
-            updateScroll();
-            input_value.value = ''; 
-        }, delayInMilliseconds);      
-    }
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script src="controller/controller.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>

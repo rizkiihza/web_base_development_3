@@ -5,10 +5,14 @@ var myApp = angular.module('myApp',[], function($locationProvider){
       });
 });
 
+
 myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
     function($rootScope, $scope, $http, $location, Service) {
         var sender_id = $location.search().sender_id;
         var receiver_id = $location.search().receiver_id;
+
+        $scope.sid = sender_id;
+        $scope.rid = receiver_id;
 
         $http.get('http://localhost:3000/chat/chatapp/' + sender_id + "/" + receiver_id).then(function (response) {
           console.log("i got the data i requested");    
