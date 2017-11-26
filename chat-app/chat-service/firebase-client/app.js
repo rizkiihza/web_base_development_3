@@ -1,8 +1,15 @@
-importScripts('/__/firebase/3.9.0/firebase-app.js');
-importScripts('/__/firebase/3.9.0/firebase-messaging.js');
-importScripts('/__/firebase/init.js');
+var firebase = require("firebase-admin");
+
+var config = {
+    apiKey: "<API_KEY>",
+    authDomain: "chat-service-24935.firebaseapp.com",
+    databaseURL: "https://chat-service-24935.firebaseio.com",
+    storageBucket: "<BUCKET>.appspot.com",
+  };
+firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
+  
 
 messaging.requestPermission()
 .then(function () {

@@ -16,25 +16,27 @@ admin.initializeApp({
 //Routing
 app.post('/send', function (req, res, next) {
     //API tokenapp digunakan untuk mendapatkan token firebase 
-    var url='http://localhost:3030/token/tokenapp/' + req.body.user_id;
+    // var url='http://localhost:3030/token/tokenapp/' + req.body.user_id;
     
     //request ke API tokenapp
-    request.get(url, (error, response, body) => {
-        if (error) {
-            res.json({"msg": error});
-            console.log(error);
-        }
+    // request.get(url, (error, response, body) => {
+    //     if (error) {
+    //         res.json({"msg": error});
+    //         console.log(error);
+    //     }
 
-        //parsing hasil dari get request
-        let token_object = JSON.parse(body);
-        console.log(token_object);
+    //     //parsing hasil dari get request
+    //     let token_object = JSON.parse(body);
+    //     console.log(token_object);
 
-        //proses untuk mengrim pesan
-        let registrationToken = token_object[0].token;
-        let payload = req.body.payload;
-        sendMessage(registrationToken, payload);
-    })
-
+    //     //proses untuk mengrim pesan
+    //     let registrationToken = token_object[0].token;
+    //     let payload = req.body.payload;
+    //     sendMessage(registrationToken, payload);
+    // })
+    let registrationToken = req.body.firebaseToken;
+    let payload = req.body.payload;
+    sendMessage(registrationToken, payload);
     res.json({msg : "success"});
 });
 
