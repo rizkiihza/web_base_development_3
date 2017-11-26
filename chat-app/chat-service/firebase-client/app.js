@@ -1,4 +1,5 @@
 
+
 const messaging = firebase.messaging();
 
 messaging.requestPermission()
