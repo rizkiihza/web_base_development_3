@@ -27,7 +27,7 @@
         <div class = "row">
             <div class = "navbar fixed-bottom" ng-controller="AppAdd">
                 <div class = "col-sm-11">
-                    <input class = "form-control" ng-model= "chat.pesan">
+                    <input id ="input_chat" class = "form-control" ng-model= "chat.pesan">
                 </div>
                 <div class = "col-sm-1">
                     <button class = "btn btn-primary" ng-click= "addChat()" onClick="updateChat()">send</button>
@@ -47,10 +47,12 @@
     function updateChat(){
         var delayInMilliseconds = 100; //1 second
 
-    setTimeout(function() {
-        updateScroll();
-    }, delayInMilliseconds);
-        
+        var input_value = document.getElementById("input_chat");
+
+        setTimeout(function() {
+            updateScroll();
+            input_value.value = ''; 
+        }, delayInMilliseconds);      
     }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>

@@ -39,10 +39,8 @@ myApp.controller('AppAdd', ['$rootScope','$scope', '$http', '$location',
             var chat_string = $scope.chat.pesan;
             $scope.chat.message = chat_string;
 
-            var new_chat = JSON.parse(JSON.stringify($scope.chat));
-
             $scope.pesan2 = $rootScope.chats;
-            $scope.pesan2.push(JSON.parse(JSON.stringify(new_chat)));
+            $scope.pesan2.push(JSON.parse(JSON.stringify($scope.chat)));
 
             var total_pesan = $scope.pesan2;
             $scope.chats = total_pesan;
