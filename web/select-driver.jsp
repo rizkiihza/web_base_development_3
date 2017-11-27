@@ -56,6 +56,10 @@
             <div class="circle">3</div>
             <p>Complete your Order</p>
         </div>
+        <div id="step4" class="division">
+            <div class="circle">4</div>
+            <p>Complete your Order</p>
+        </div>
     </div>
     <%
         OjekWSImplService driverService = new OjekWSImplService();

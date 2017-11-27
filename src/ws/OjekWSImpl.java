@@ -61,6 +61,7 @@ public class OjekWSImpl implements OjekWS {
                         "history where Name = \"" + prefDriver + "\"  and ID = ID_Driver";
 
                 ResultSet result = state.executeQuery(sql);
+                System.out.println(sql);
 //                if (result.wasNull()) {
 //                    out.println("No Drivers Founded");
 //                } else {
@@ -81,8 +82,8 @@ public class OjekWSImpl implements OjekWS {
 
             Statement stmt = conn.createStatement();
 
-            String sql = "select distinct profil.ID as ID, Name from profil, pref_Location where profil.ID = " +
-                    "pref_Location.ID and Location = \"" + pick + "\" or Location = \"" + dest + "\"";
+            String sql = "select distinct profil.ID as ID, Name from profil, pref_location, find_order where profil.ID = " +
+                    "pref_location.ID and is_finding = 1 and Location = \"" + pick + "\" or Location = \"" + dest + "\"";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
