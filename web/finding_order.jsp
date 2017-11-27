@@ -49,46 +49,20 @@
         <h2>LOOKING FOR AN ORDER</h2>
     </div>
 
-    <div id="finding-status">
+    <div id="finding-block">
+        <div id="finding-status">
 
+        </div>
+
+        <div>
+            <button type="button" id="find-button" class="btn-inactive" name="find" onclick="sendFindRequest()">FIND ORDER</button>
+        </div>
     </div>
 
-    <div>
-        <button type="button" id="find-button" class="btn-inactive" name="find" onclick="sendFindRequest()">FIND ORDER</button>
+    <div id="chat-block">
+        <iframe src="http://localhost:8000/index2.html?sender_id=<%=session.getAttribute("IDUserAktif")%>&receiver_id=<%=session.getAttribute("idDriver")%>" height="250" width="100%"></iframe>
     </div>
-    <%--<div id="order-flow">--%>
-        <%--<div id="step1" class="division active">--%>
-            <%--<div class="circle">1</div>--%>
-            <%--<p>Select Destination</p>--%>
-        <%--</div>--%>
-        <%--<div id="step2" class="division">--%>
-            <%--<div class="circle">2</div>--%>
-            <%--<p>Select a Driver</p>--%>
-        <%--</div>--%>
-        <%--<div id="step3" class="division">--%>
-            <%--<div class="circle">3</div>--%>
-            <%--<p>Complete your Order</p>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<div id="select-destination">--%>
-        <%--<form  id="destination-form" action="select-driver.jsp" method="post" onsubmit="return validateField()">--%>
-            <%--<table style="margin:auto">--%>
-                <%--<tr>--%>
-                    <%--<th><label class="label">Picking point <span></span></label></th>--%>
-                    <%--<th><input type="text" id="driver-pick-point" name="picking-point" class="input-order"></th>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<th><label class="label">Destination <span></span></label></th>--%>
-                    <%--<th><input type="text" id="driver-destination" name="destination" class="input-order"></th>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<th><label class="label">Preferred Driver <span></span></label></th>--%>
-                    <%--<th><input type="text" name="pref-driver" class="input-order" placeholder="(optional)"></th>--%>
-                <%--</tr>--%>
-            <%--</table>--%>
-            <%--<button type="submit" id="button" name="next" />NEXT</button>--%>
-        <%--</form>--%>
-    <%--</div>--%>
+
 </div>
 
 <script type="text/javascript" src="js/finding_order.js"></script>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,9 +27,10 @@ import history.listhistory;
 public class OjekWSImpl implements OjekWS {
 
     public static void validateAccess(String token) {
-        String url = "http://localhost:8079/loginServlet?token=" + token;
+        String url = "http://localhost:8079/loginServlet?token=";
         try {
-            URL obj = new URL(url);
+            String encodedParam = URLEncoder.encode(token, "UTF-8");
+            URL obj = new URL(url + encodedParam);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
             con.setRequestMethod("GET");

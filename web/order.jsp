@@ -15,11 +15,12 @@
 <body>
 
 <%
+    OjekWSImpl.validateAccess((String)session.getAttribute("TokenUserAktif"));
+
     if (user.Driver.equals("1")) {
         response.sendRedirect("finding_order.jsp?id_active=" + session.getAttribute("IDUserAktif"));
     }
 
-    OjekWSImpl.validateAccess((String)session.getAttribute("TokenUserAktif"));
 %>
 <div id="frame">
     <header class="clearfix">

@@ -62,7 +62,7 @@
         </div>
     </div>
     <div id="select-destination">
-        <iframe src="https://www.google.com" height="250" width="100%"></iframe>
+        <iframe src="http://localhost:8000/index2.html?sender_id=<%=session.getAttribute("IDUserAktif")%>&receiver_id=<%=session.getAttribute("idDriver")%>" height="250" width="100%"></iframe>
 
         <a href = 'complete-order.jsp?id=<%=session.getAttribute("idDriver")%>'>
             <button class="close-button" name="choose">Close</button></a>

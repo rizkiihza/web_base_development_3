@@ -11,6 +11,10 @@ var dest;
 //
 // }
 
+function chooseDriver() {
+
+}
+
 function choose(idx) {
     driver_id = document.getElementById('choose-id' + idx).innerHTML;
     var user = document.getElementById('choose-user' + idx).innerHTML;

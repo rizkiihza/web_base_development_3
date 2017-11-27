@@ -126,8 +126,8 @@
                     <a id="choose-rate<%=i%>" class="other-rating" >&#9734 <%=k.getRate()%></a>
                     <a id="choose-vote<%=i%>" class="other-votes"><%=k.getVoter()%> (votes)</a>
                 </div>
-                <a href = 'chat-driver.jsp?id=<%=k.getID()%>'><button class="button-choose-driver"
-                                                                         name="choose" />I Choose You!</button></a>
+                <a href = 'chat-driver.jsp?id=<%=k.getID()%>'><button class="button-choose-driver" onclick="chooseDriver()"
+                                                                         name="choose">I Choose You!</button></a>
             </div>
             <%
                     i++;
