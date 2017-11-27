@@ -139,7 +139,11 @@
 
         messaging.onMessage(function (payload) {
             console.log('On message', payload.data);
-            document.getElementById("myRepeat").innerHTML +="<div class='receiver'><div id='receive'>" + payload.data.message + "</div></div>";
+            document.getElementById("myRepeat").innerHTML +=" <div class='receiver'><div id='receive'>" + payload.data.message + "</div></div>";
+            var  n = document.getElementById("myRepeat").innerHTML;
+            console.log(n);
+
+            updateScroll();
         });
 
     </script>
