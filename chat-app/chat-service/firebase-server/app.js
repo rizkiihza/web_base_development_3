@@ -7,12 +7,14 @@ const admin = require('firebase-admin');
 const serviceAccount  = require('./chat-app-wbd3-firebase-adminsdk-pa77q-51c55e1141.json');
 const http = require('http');
 const request = require('request');
-
+const cors = require("cors");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://chat-app-wbd3.firebaseio.com"
 });
+
+app.use(cors());
 
 //Routing
 app.post('/send', function (req, res, next) {

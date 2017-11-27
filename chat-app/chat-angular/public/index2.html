@@ -8,7 +8,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         <title>Chat App</title>
     </head>
-    <body onload="updateChat()">
+    <body onload="updateScroll()">
         <div class="container">
             <div class="panel" >
                 <div id="kotak_chat" class="panel-body" style="height: 500px;overflow: auto;">
@@ -51,19 +51,16 @@
             var input_value = document.getElementById("input_chat");
 
             setTimeout(function() {
-                updateScroll();
-                input_value.value = ''; 
-
                 var url_string = window.location.href;
                 var url = new URL(url_string);
                 var sender_id = url.searchParams.get("sender_id");
-                var receiver_id = url.searchParams.get("sender_id");
-
+                var receiver_id = url.searchParams.get("receiver_id");
+           
                 var data =  {
                                 "user_id": receiver_id,
                                 "payload": {
                                     "data": {
-                                        "text": "<MESSAGE>"
+                                        "text": input_value.value
                                     }
                                 }
                             }
@@ -76,8 +73,11 @@
                 xhr.send(JSON.stringify(data));
 
                 xhr.onloadend = function () {
-                    console.log("success sending chat");
+
                 };
+
+                updateScroll();
+                input_value.value = ''; 
             }, delayInMilliseconds);      
         }
     </script>
@@ -129,7 +129,7 @@
                 };
             })
             .catch(function (err) {
-                console.log('Error Occured');
+                console.log(err);
             })
 
         messaging.onMessage(function (payload) {
