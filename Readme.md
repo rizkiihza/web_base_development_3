@@ -12,8 +12,9 @@ Diharapkan dengan tugas ini Anda dapat mengerti:
 * Web security terkait access token dan HTTP Headers.
 
 ## Anggota Tim
-Setiap kelompok beranggotakan **3 orang dari kelas yang sama**. Jika jumlah mahasiswa dalam satu kelas modulo 3 menghasilkan 1, maka hanya 1 kelompok terdiri dari 4 mahasiswa. Jika jumlah mahasiswa modulo 3 menghasilkan 2, maka ada dua kelompok yang beranggotakan 4 orang. Anggota kelompok harus berbeda dengan tugas 1 dan tugas 2.
-
+### Muhammad Fathur Rahman 13515068
+### Muhammad Iqbal Al Khowarizmi 13515086
+### Rizki Ihza Parama 13515104
 
 ## Petunjuk Pengerjaan
 1. Buatlah organisasi pada gitlab dengan format "IF3110-2017-KXX-nama kelompok", dengan XX adalah nomor kelas.
@@ -156,17 +157,19 @@ Harap semua anggota kelompok mengerjakan baik implementasi Firebase sebagai *clo
 
 
 Chat App Front-end :
-1. Fungsionalitas A : 135140XX  
-2. Fungsionalitas B : 135140XX  
+1. Update Chat : 13515068 
+2. Menampilkan Chat : 13515068
+3. Membuat Tampilan : 13515104
+4. Find Order : 13515086
 
 
 Chat REST Service:  
-1. Fungsionalitas C : 135140XX  
-2. Fungsionalitas D : 135140XX  
+1. chat-angular : 13515068  
+2. chat-mongo : 13515104
+3. chat-firebase : 13515086
 
 Fitur security (IP, User-agent) :
-1. Fungsionalitas E : 135140XX
-2. Fungsionalitas F : 135140XX
+1. Token : 13515086
 
 
 ## About
