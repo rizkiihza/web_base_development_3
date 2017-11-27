@@ -1,10 +1,4 @@
-.idea/
-out/
-
-## File-based project format:
-*.iws
-*.iml
-*.wsdl
-/web/finding_order.jsp
-/web/js/finding_order.js
-/src/findingorder/
+.idea
+chat-service/package.json
+chat-service/chat-service-24935-firebase-adminsdk-dx7x3-f12d8c6b0d.json
+node_modules

@@ -1,0 +1,25 @@
+{
+  "name": "angular-tutorial",
+  "version": "1.0.0",
+  "description": "fdsjaf",
+  "main": "angular.js",
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1 ./public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "fdsa"
+  ],
+  "author": "rip",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "firebase": "^4.6.2",
+    "firebase-admin": "^5.5.1",
+    "http-server": "^0.10.0"
+  }
+}
