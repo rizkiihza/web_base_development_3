@@ -1,1 +1,4 @@
-.idea/
+.idea
+chat-service/package.json
+chat-service/chat-service-24935-firebase-adminsdk-dx7x3-f12d8c6b0d.json
+node_modules
