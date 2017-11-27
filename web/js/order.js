@@ -11,7 +11,39 @@ var dest;
 //
 // }
 
-function chooseDriver() {
+function chooseDriver(driverId) {
+    var request = new XMLHttpRequest();
+    var custId = document.getElementById("idUserAktif").innerHTML;
+    request.open("POST", "setOrder");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                console.log("Success.");
+            } else {
+                alert(request.responseText);
+            }
+        }
+    };
+    console.log(request.readyState);
+    request.send("driverId="+driverId+"&custId="+custId);
+}
+
+function clearCurrentOrder() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "find");
+    request.setRequestHeader("Content-type", "text/html");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                console.log("Cleared.");
+            } else {
+                alert(request.responseText);
+            }
+        }
+    };
+    console.log(request.readyState);
+    request.send();
 
 }
 

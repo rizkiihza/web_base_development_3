@@ -29,6 +29,9 @@ public class FindingOrderServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Page active");
+        CurrentOrder.deleteCurrentOrder();
+        PrintWriter output = resp.getWriter();
+        resp.setStatus(200);
+        output.write("Cleared.");
     }
 }

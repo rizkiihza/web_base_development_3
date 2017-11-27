@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
+        <servlet-name>CurrentOrderServlet</servlet-name>
+        <servlet-class>findingorder.CurrentOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CurrentOrderServlet</servlet-name>
+        <url-pattern>/setOrder</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>FindingOrderServlet</servlet-name>
         <servlet-class>findingorder.FindingOrderServlet</servlet-class>
     </servlet>

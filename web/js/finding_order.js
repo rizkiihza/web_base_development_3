@@ -1,3 +1,26 @@
+function getCurrentOrder() {
+    var request = new XMLHttpRequest();
+    var driverId = document.getElementById("idUserAktif").innerHTML;
+    request.open("GET", "setOrder?driverId="+driverId);
+    request.setRequestHeader("Content-type", "text/html");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                var custId = request.responseText;
+                console.log(custId);
+                console.log(driverId);
+                var chatbox = document.getElementById("chat-block");
+                chatbox.innerHTML = "<iframe src=\"http://localhost:8000/index2.html?sender_id=" + driverId +
+                    "&receiver_id=" + custId + "\" height=\"250\" width=\"100%\"></iframe>"
+            } else {
+                alert(request.responseText);
+            }
+        }
+    };
+    console.log(request.readyState);
+    request.send();
+}
+
 function sendFindRequest() {
     var request = new XMLHttpRequest();
     var driverId = document.getElementById("idUserAktif").innerHTML;

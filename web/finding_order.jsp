@@ -60,7 +60,7 @@
     </div>
 
     <div id="chat-block">
-        <iframe src="http://localhost:8000/index2.html?sender_id=<%=session.getAttribute("IDUserAktif")%>&receiver_id=<%=session.getAttribute("idDriver")%>" height="250" width="100%"></iframe>
+        <button type="button" id="button" class="btn-inactive" name="chat" onclick="getCurrentOrder()">Chat</button>
     </div>
 
 </div>

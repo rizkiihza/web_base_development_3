@@ -78,7 +78,7 @@
             </div>
         </div>
         <textarea id="user-text" rows="4"  name="comment" placeholder="Write your experience about The Driver.."></textarea>
-        <button type="submit" class="button-complete-order" name="complete" />Complete Order</button>
+        <button type="submit" class="button-complete-order" name="complete" onclick="clearCurrentOrder()">Complete Order</button>
     </form>
     </div>
 
