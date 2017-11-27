@@ -41,8 +41,10 @@
     </html>
     <script>
         function updateScroll(){
-            var element = document.getElementById("kotak_chat");
-            element.scrollTop = element.scrollHeight;
+            setTimeout(function() {
+                var element = document.getElementById("kotak_chat");
+                element.scrollTop = element.scrollHeight;
+            }, 100);
         }
 
         function updateChat(){
@@ -134,5 +136,7 @@
 
         messaging.onMessage(function (payload) {
             console.log('On message', payload);
+            location.reload();
         });
+
     </script>
