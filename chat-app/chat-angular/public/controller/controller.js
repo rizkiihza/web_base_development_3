@@ -40,6 +40,8 @@ myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
 myApp.controller('AppAdd', ['$rootScope','$scope', '$http', '$location', 
     function($rootScope,$scope, $http, $location) {
         $scope.addChat = function() {
+            var sender_id = $location.search().sender_id;
+            var receiver_id = $location.search().receiver_id;
             $scope.chat.sender_id = $location.search().sender_id;
             $scope.chat.receiver_id = $location.search().receiver_id;
             $scope.chat.time = new Date().getTime();
@@ -55,6 +57,7 @@ myApp.controller('AppAdd', ['$rootScope','$scope', '$http', '$location',
             $rootScope.chats = total_pesan;
             
             console.log($scope.chats);
+
             $http.post('http://localhost:3000/chat/chatapp/', $scope.chat);
         };
     }

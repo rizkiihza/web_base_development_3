@@ -1,0 +1,8 @@
+ke folder chat-angular:
+    npm start
+ke folder chat-mongo
+    nodemon
+ke folder chat-service/firebase-server
+    node app.js
+ke folder firebase-mongo/ 
+    nodemon

@@ -53,6 +53,31 @@
             setTimeout(function() {
                 updateScroll();
                 input_value.value = ''; 
+
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var sender_id = url.searchParams.get("sender_id");
+                var receiver_id = url.searchParams.get("sender_id");
+
+                var data =  {
+                                "user_id": receiver_id,
+                                "payload": {
+                                    "data": {
+                                        "text": "<MESSAGE>"
+                                    }
+                                }
+                            }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://localhost:8080/send", true);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+                // send the collected data as JSON
+                xhr.send(JSON.stringify(data));
+
+                xhr.onloadend = function () {
+                    console.log("success sending chat");
+                };
             }, delayInMilliseconds);      
         }
     </script>
@@ -87,7 +112,7 @@
                 var url = new URL(url_string);
                 var sender_id = url.searchParams.get("sender_id");
 
-                var data ={
+                var data = {
                     "user_id": sender_id,
                     "token": token
                 }
@@ -106,4 +131,8 @@
             .catch(function (err) {
                 console.log('Error Occured');
             })
+
+        messaging.onMessage(function (payload) {
+            console.log('On message', payload);
+        });
     </script>

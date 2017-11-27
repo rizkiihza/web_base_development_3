@@ -6,6 +6,7 @@ var config = {
     databaseURL: "https://chat-service-24935.firebaseio.com",
     storageBucket: "<BUCKET>.appspot.com",
   };
+  
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
