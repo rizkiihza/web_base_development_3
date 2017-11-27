@@ -55,13 +55,18 @@ myApp.controller('AppAdd', ['$rootScope','$scope', '$http', '$location',
             var total_pesan = $scope.pesan2;
             $scope.chats = total_pesan;
             $rootScope.chats = total_pesan;
-            
-            console.log($scope.chats);
-
+        
             $http.post('http://localhost:3000/chat/chatapp/', $scope.chat);
         };
     }
 ]);
+
+function updateScroll(){
+    setTimeout(function() {
+        var element = document.getElementById("kotak_chat");
+        element.scrollTop = element.scrollHeight;
+    }, 100);
+}
 
 function sortByTime(array_of_chat) {
     return array_of_chat.sort(function (a,b) {
