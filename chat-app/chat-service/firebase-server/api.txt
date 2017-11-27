@@ -5,7 +5,10 @@ POST /send
 	"user_id" : USER_ID,
 	"payload": {
 		"data": {
-			"text": "<MESSAGE>"
+			"sender_id": <SENDER_ID>			
+			"user_id": <RECEIVER_ID>
+			"message": "<MESSAGE>"
+			"time": <TIME>
 		}
 	}
 }

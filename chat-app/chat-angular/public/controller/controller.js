@@ -7,7 +7,7 @@ var myApp = angular.module('myApp',[], function($locationProvider){
 
 myApp.controller('AppStart', ['$scope', '$http', '$location', 
     function($scope, $http, $location){
-    
+    extScope = $scope;
 }]);
 
 myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
