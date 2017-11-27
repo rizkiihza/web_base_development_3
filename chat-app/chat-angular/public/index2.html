@@ -59,3 +59,51 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="controller/controller.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyCrKohsg5JvT4jQtF7rovKFaedf-ewfVd4",
+            authDomain: "chat-app-wbd3.firebaseapp.com",
+            databaseURL: "https://chat-app-wbd3.firebaseio.com",
+            projectId: "chat-app-wbd3",
+            storageBucket: "",
+            messagingSenderId: "452250212374"
+        };
+
+        firebase.initializeApp(config);
+
+        const messaging = firebase.messaging();  
+        messaging.requestPermission()
+            .then(function () {
+                console.log('Have permission');
+                var token = messaging.getToken();
+                return token;
+            })
+            .then(function (token) {
+                console.log('Token yang didapatkan');
+                console.log(token);
+
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var sender_id = url.searchParams.get("sender_id");
+
+                var data ={
+                    "user_id": sender_id,
+                    "token": token
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://localhost:3030/token/tokenapp/", true);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+                // send the collected data as JSON
+                xhr.send(JSON.stringify(data));
+
+                xhr.onloadend = function () {
+                    console.log("success updating database token");
+                };
+            })
+            .catch(function (err) {
+                console.log('Error Occured');
+            })
+    </script>

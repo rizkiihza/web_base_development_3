@@ -5,6 +5,11 @@ var myApp = angular.module('myApp',[], function($locationProvider){
       });
 });
 
+myApp.controller('AppStart', ['$scope', '$http', '$location', 
+    function($scope, $http, $location){
+    
+}]);
+
 myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
     function($rootScope, $scope, $http, $location, Service) {
         var sender_id = $location.search().sender_id;
