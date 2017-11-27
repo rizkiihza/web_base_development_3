@@ -65,7 +65,7 @@
         </div>
     </div>
     <div id="select-destination">
-        <form  id="destination-form" action="select-driver.jsp" method="post" onsubmit="return validateField()">
+        <form  id="destination-form" action="select-driver.jsp?" method="post" onsubmit="return validateField()">
             <table style="margin:auto">
                 <tr>
                     <th><label class="label">Picking point <span></span></label></th>

@@ -436,3 +436,17 @@ a:visited {
     text-align: center;
     font-size: 19px;
 }
+
+/*Chat Driver*/
+.close-button {
+    width: 125px;
+    height: 40px;
+    border: 2px solid;
+    background-color: #ce0c0c;
+    border-radius: 10px;
+    font-family: 'bebasregular';
+    font-size: 21px;
+    color: white;
+    margin-left: 220px;
+    margin-top: 5px;
+}
