@@ -33,7 +33,15 @@ myApp.controller('AppView', ['$rootScope','$scope', '$http', '$location',
             $scope.chats = sortByTime($scope.chats);
             $rootScope.chats = $scope.chats;
         });
-        
+
+        messaging.onMessage(function (payload) {
+            console.log('On message', payload.data);
+            $scope.chats.push({message: payload.data.message,sender_id: payload.data.sender_id,receiver_id: payload.data.user_id});
+            $scope.$apply();
+            console.log($scope.chats);
+
+            updateScroll();
+        });
     }
 ]);
 
