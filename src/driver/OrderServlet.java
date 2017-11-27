@@ -25,7 +25,13 @@ public class OrderServlet extends HttpServlet {
         String idCust = (String) session.getAttribute("IDUserAktif");
         String idDriver = (String) session.getAttribute("idDriver");
         String today = fdate.format(date);
-        int rate = Integer.valueOf(request.getParameter("rate"));
+
+        int rate;
+        if (request.getParameter("rate") == null) {
+            rate = 0;
+        } else {
+            rate = Integer.valueOf(request.getParameter("rate"));
+        }
 
         eif.insertHistory(idCust, pick, dest, idDriver, today, rate,
                 request.getParameter("comment"));

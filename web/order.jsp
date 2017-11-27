@@ -16,6 +16,11 @@
 
 <%
     OjekWSImpl.validateAccess((String)session.getAttribute("TokenUserAktif"));
+
+    if (user.Driver.equals("1")) {
+        response.sendRedirect("finding_order.jsp?id_active=" + session.getAttribute("IDUserAktif"));
+    }
+
 %>
 <div id="frame">
     <header class="clearfix">
@@ -53,11 +58,15 @@
         </div>
         <div id="step3" class="division">
             <div class="circle">3</div>
+            <p>Chat Driver</p>
+        </div>
+        <div id="step4" class="division">
+            <div class="circle">4</div>
             <p>Complete your Order</p>
         </div>
     </div>
     <div id="select-destination">
-        <form  id="destination-form" action="select-driver.jsp" method="post" onsubmit="return validateField()">
+        <form  id="destination-form" action="select-driver.jsp?" method="post" onsubmit="return validateField()">
             <table style="margin:auto">
                 <tr>
                     <th><label class="label">Picking point <span></span></label></th>

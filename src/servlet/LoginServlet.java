@@ -1,9 +1,9 @@
 package servlet;
 
-import com.google.gson.Gson;
 import database.MySQLConnect_Account;
 import identityservice.RandomString;
 import identityservice.User;
+import validator.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,11 +12,9 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.net.URLDecoder;
 import java.security.SecureRandom;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "loginServlet")
 public class LoginServlet extends HttpServlet {
@@ -25,12 +23,14 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("userpass");
+        String ipAddress = request.getRemoteAddr();
+        String userAgent = request.getHeader("User-Agent");
 
 //        out.println(username);
 
-        if (validateLogin(username, password)) {
+        if (validateLogin(username, password, ipAddress, userAgent)) {
 
-            String token = generateToken();
+            String token = generateToken(username, ipAddress, userAgent);
 
             User user = new User(username, password, token);
 
@@ -104,25 +104,92 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String token = request.getParameter("token");
+        String encodedToken = request.getParameter("token");
+        String token = URLDecoder.decode(encodedToken, "UTF-8");
+        System.out.println("LoginServlet: " + token);
+        String url = request.getContextPath() + "/error.jsp";
 
-        System.out.println(token);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+
+        if (!isTokenValid(token)) {
+            url = request.getContextPath() + "/login.jsp";
+            response.sendRedirect(url);
+        } //else {
+//            String status = Validator.validate(token, request);
+//            System.out.println("LoginServlet: " + status);
+//            String message = "";
+//            switch (status){
+//                case "expired":
+//                    message = "Token expired. Please login again";
+//                    request.setAttribute("message", message);
+//                    dispatcher.forward(request, response);
+//                    break;
+//                case "ipError":
+//                    message = "IP address changed. Please login again";
+//                    request.setAttribute("message", message);
+//                    dispatcher.forward(request, response);
+//                    break;
+//                case "agentError":
+//                    message = "User agent changed. Please login again";
+//                    request.setAttribute("message", message);
+//                    dispatcher.forward(request, response);
+//                    break;
+//                case "unauthorized":
+//                    message = "Invalid token. Please login again";
+//                    request.setAttribute("message", message);
+//                    dispatcher.forward(request, response);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+    }
+
+    private boolean isTokenValid(String token) {
+        Connection connection = null;
+
+        boolean found = false;
 
         if (token == null) {
-            String url = request.getContextPath() + "/login.jsp";
-            response.sendRedirect(url);
+            return false;
+        } else {
+            try {
+                MySQLConnect_Account.connect();
+                connection = MySQLConnect_Account.getConn();
+                String query = "SELECT * FROM user WHERE token=\""+ token +"\"";
+                Statement stmt = connection.createStatement();
+
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next() && !found) {
+                    if (rs.getString("token").equals(token)) {
+                        found = true;
+                        System.out.println("Token valid");
+                    }
+                }
+
+                rs.close();
+                stmt.close();
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
         }
+
+        return found;
     }
 
-    private String generateToken() {
-        String alphanumeric = RandomString.digits + "ACEFGHJKLMNPQRUVWXYabcdefhijkprstuvwx";
-
-        RandomString token = new RandomString(20, new SecureRandom(), alphanumeric);
-
-        return token.getRandomString();
+    private String generateToken(String username, String ipAddress, String userAgent) {
+        return Validator.generateToken(username, ipAddress, userAgent);
+//        String alphanumeric = RandomString.digits + "ACEFGHJKLMNPQRUVWXYabcdefhijkprstuvwx";
+//
+//        RandomString token = new RandomString(20, new SecureRandom(), alphanumeric);
+//
+//        return token.getRandomString() + ipAddress + userAgent;
     }
 
-    private boolean validateLogin (String username, String password) {
+    private boolean validateLogin (String username, String password, String ipAddress, String userAgent) {
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -153,7 +220,7 @@ public class LoginServlet extends HttpServlet {
             if (rs.next()) {
                 status = true;
 
-                String token = generateToken();
+                String token = generateToken(username, ipAddress, userAgent);
             }
 
 

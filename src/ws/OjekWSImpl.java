@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,9 +27,10 @@ import history.listhistory;
 public class OjekWSImpl implements OjekWS {
 
     public static void validateAccess(String token) {
-        String url = "http:://localhost:8080/loginServlet?token=" + token;
+        String url = "http://localhost:8079/loginServlet?token=";
         try {
-            URL obj = new URL(url);
+            String encodedParam = URLEncoder.encode(token, "UTF-8");
+            URL obj = new URL(url + encodedParam);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
             con.setRequestMethod("GET");
@@ -61,6 +63,7 @@ public class OjekWSImpl implements OjekWS {
                         "history where Name = \"" + prefDriver + "\"  and ID = ID_Driver";
 
                 ResultSet result = state.executeQuery(sql);
+                System.out.println(sql);
 //                if (result.wasNull()) {
 //                    out.println("No Drivers Founded");
 //                } else {
@@ -81,8 +84,8 @@ public class OjekWSImpl implements OjekWS {
 
             Statement stmt = conn.createStatement();
 
-            String sql = "select distinct profil.ID as ID, Name from profil, pref_Location where profil.ID = " +
-                    "pref_Location.ID and Location = \"" + pick + "\" or Location = \"" + dest + "\"";
+            String sql = "select distinct profil.ID as ID, Name from profil, pref_location, find_order where profil.ID = " +
+                    "pref_location.ID and is_finding = 1 and Location = \"" + pick + "\" or Location = \"" + dest + "\"";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {

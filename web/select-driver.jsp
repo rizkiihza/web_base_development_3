@@ -20,6 +20,8 @@
 <body>
 
 <div id="frame">
+    <span id="idUserAktif" hidden><%=session.getAttribute("IDUserAktif")%></span>
+
     <header class="clearfix">
         <div id=logo>
             <h2 id="main-logo"><span id="logo1">PR-</span><span id="logo2">OJEK</span></h2>
@@ -54,6 +56,10 @@
         </div>
         <div id="step3" class="division">
             <div class="circle">3</div>
+            <p>Complete your Order</p>
+        </div>
+        <div id="step4" class="division">
+            <div class="circle">4</div>
             <p>Complete your Order</p>
         </div>
     </div>
@@ -122,8 +128,8 @@
                     <a id="choose-rate<%=i%>" class="other-rating" >&#9734 <%=k.getRate()%></a>
                     <a id="choose-vote<%=i%>" class="other-votes"><%=k.getVoter()%> (votes)</a>
                 </div>
-                <a href = 'complete-order.jsp?id=<%=k.getID()%>'><button class="button-choose-driver"
-                                                                         name="choose" />I Choose You!</button></a>
+                <a href = 'chat-driver.jsp?id=<%=k.getID()%>'><button class="button-choose-driver" onclick="chooseDriver(<%=k.getID()%>)"
+                                                                         name="choose">I Choose You!</button></a>
             </div>
             <%
                     i++;

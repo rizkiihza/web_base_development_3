@@ -46,8 +46,12 @@
             <div class="circle">2</div>
             <p>Select a Driver</p>
         </div>
-        <div id="step3" class="division active">
+        <div id="step3" class="division">
             <div class="circle">3</div>
+            <p>Complete your Order</p>
+        </div>
+        <div id="step4" class="division active">
+            <div class="circle">4</div>
             <p>Complete your Order</p>
         </div>
     </div>
@@ -74,7 +78,7 @@
             </div>
         </div>
         <textarea id="user-text" rows="4"  name="comment" placeholder="Write your experience about The Driver.."></textarea>
-        <button type="submit" class="button-complete-order" name="complete" />Complete Order</button>
+        <button type="submit" class="button-complete-order" name="complete" onclick="clearCurrentOrder()">Complete Order</button>
     </form>
     </div>
 

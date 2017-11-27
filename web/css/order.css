@@ -190,7 +190,7 @@ a:visited {
 .division{
     flex-grow:1;
     margin-right: 0.5em;
-    width: 30%;
+    width: 20%;
     height: auto;
     border: 1px solid #000000;
 }
@@ -200,8 +200,8 @@ a:visited {
 }
 
 .circle {
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
     margin: 0.4em;
     float: left;
     -webkit-border-radius: 25px;
@@ -411,3 +411,43 @@ a:visited {
 .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
 
 .rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
+
+/*Finding Order*/
+#find-button {
+    width: 200px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 10px;
+    font-family: 'bebasregular';
+    font-size: 21px;
+    margin-left: 180px;
+    margin-top: 100px;
+}
+
+.btn-active {
+    background-color: #ce0c0c;
+}
+
+.btn-inactive {
+    background-color: #82d800;
+}
+
+#finding-status {
+    text-align: center;
+    font-size: 19px;
+}
+
+/*Chat Driver*/
+.close-button {
+    width: 125px;
+    height: 40px;
+    border: 2px solid;
+    background-color: #ce0c0c;
+    border-radius: 10px;
+    font-family: 'bebasregular';
+    font-size: 21px;
+
+    color: white;
+    margin-left: 220px;
+    margin-top: 5px;
+}
